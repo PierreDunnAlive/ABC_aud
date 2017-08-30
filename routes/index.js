@@ -41,10 +41,12 @@ function add(doc, param) {
 };
 
 function update(doc, param) {
-    
+    console.log(param);
         for (var i = 0; i < doc.length; i++){
-            
+            console.log("param.name " + param.name);
+            console.log(doc[i].name + "doc[i].name");
             if (doc[i].name == param.name){
+                console.log("Совпадение? Не думаю")
                 if (doc[i].created){
                     var created = doc[i].created;
                 };
@@ -57,7 +59,7 @@ function update(doc, param) {
             }
     
             if (doc[i].children){
-                find(doc[i].children, param)
+                update(doc[i].children, param);
             };
         };
 };
@@ -92,6 +94,7 @@ router.get("/add/:options", (req, res, next) =>{
 
 router.get("/update/:options", (req, res, next) =>{
     var options = JSON.parse(req.params.options);
+    console.log(options);
     update(global, options);
 
     fs.writeFileSync("./global.json", JSON.stringify(global, null, " "));
