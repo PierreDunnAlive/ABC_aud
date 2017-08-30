@@ -45,9 +45,15 @@ function update(doc, param) {
         for (var i = 0; i < doc.length; i++){
             
             if (doc[i].name == param.name){
-                doc[i].name = param.switch;
+                if (doc[i].created){
+                    var created = doc[i].created;
+                };
+                var parent = doc[i].parent;
+                doc[i] = param;
                 var modified = new Date().toString();
                 doc[i].modified = modified;
+                doc[i].created = created;
+                doc[i].parent = parent;
             }
     
             if (doc[i].children){
