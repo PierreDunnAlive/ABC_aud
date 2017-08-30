@@ -41,12 +41,11 @@ function add(doc, param) {
 };
 
 function update(doc, param) {
-    console.log(param);
+    
         for (var i = 0; i < doc.length; i++){
-            console.log("param.name " + param.name);
-            console.log(doc[i].name + "doc[i].name");
+
             if (doc[i].name == param.name){
-                console.log("Совпадение? Не думаю")
+
                 if (doc[i].created){
                     var created = doc[i].created;
                 };
